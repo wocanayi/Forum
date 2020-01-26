@@ -8,6 +8,10 @@
         <module>Forum_Entity</module>
         <module>Forum_Common</module>
         <module>Forum_Zuul</module>
+        <module>Forum_APi</module>
+        <module>Forum_UserProvider</module>
+        <module>Forum_ArticleProvider</module>
+        <module>Forum_NetProvider</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -35,10 +39,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>

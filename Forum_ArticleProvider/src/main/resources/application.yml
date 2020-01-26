@@ -1,0 +1,26 @@
+server:
+  port: 8904
+spring:
+  application:
+    name: articleprovider
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/forum?serverTimezone=UTC
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+  rabbitmq:
+    host: 39.105.189.141
+    port: 5672
+    username: guest
+    password: guest
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+mybatis:
+  mapper-locations: classpath*:/mapper/*.xml
+
+
+

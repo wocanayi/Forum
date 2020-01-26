@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qtt.forum.article.dao.ArticleDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="articleResult" type="com.qtt.forum.article.Article">
+        <id column="id" property="id"/>
+        <result column="title" property="title" />
+        <result column="description" property="description" />
+        <result column="author" property="author" />
+        <result column="content" property="content" />
+        <result column="content_format" property="contentFormat" />
+        <result column="read_num" property="readNum" />
+        <result column="comment_num" property="commentNum" />
+        <result column="like_num" property="likeNum" />
+        <result column="cover_type" property="coverType" />
+        <result column="cover" property="cover" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="recommend" property="recommend" />
+        <result column="category_id" property="categoryId" />
+        <result column="publish" property="publish" />
+        <result column="top" property="top" />
+    </resultMap>
+
+    <select id="articleList" resultMap="articleResult">
+        select title, author, content, update_time, cover 
+        from article order by create_time desc
+    </select>
+    
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into article(title, author, content, cover_type, cover, create_time, update_time,
+                            recommend, publish, top)
+                            VALUES (#{title}, #{author}, #{content}, #{coverType}, #{cover}, now(), now(), 0, 1, 0)
+    </insert>
+    
+    <delete id="del">
+        delete from article where id = #{aid}
+    </delete>
+    
+    <update id="update">
+        update article set title = #{title}, content = #{content}, update_time = now(), cover = #{cover}
+    </update>
+    
+    <select id="findById" resultMap="articleResult">
+        select *
+        from article where id = #{aid}
+    </select>
+</mapper>
